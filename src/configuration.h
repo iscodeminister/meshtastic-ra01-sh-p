@@ -172,6 +172,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SX126X_MAX_POWER 22
 #endif
 
+#ifdef AI_THINKER_RA01SH_P
+// +29dBm rated output; datasheet V1.0.3: SX1262 drive into the FEM must not exceed +3dBm or the PA is damaged.
+// Overrides any larger SX126X_MAX_POWER from variant.h. TODO: replace TX_GAIN_LORA with a measured curve.
+#define TX_GAIN_LORA 26
+#if !defined(SX126X_MAX_POWER) || SX126X_MAX_POWER > 3
+#undef SX126X_MAX_POWER
+#define SX126X_MAX_POWER 3
+#endif
+#endif
+
 #ifdef USE_GC1109_PA
 // Power Amps are often non-linear, so we can use an array of values for the power curve
 #define NUM_PA_POINTS 22
