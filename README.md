@@ -133,6 +133,16 @@ pio device monitor --port YOUR_SERIAL_PORT --baud 115200
 `.pio/build/nrf52_promicro_diy_ra01sh_p/firmware-nrf52_promicro_diy_ra01sh_p-*.uf2`
 onto it.
 
+### Coming from a 2.8.x build (ESP32-C3)
+
+Bluetooth pairings saved by 2.8.x crash 2.7.26 at boot (`Stack smashing protect failure!`
+after `Init the NimBLE bluetooth module`, in `populate_db_from_nvs`). Erase the NVS
+partition once, then pair the phone again (PIN 123456). Meshtastic settings are kept.
+
+```sh
+python -m esptool --chip esp32c3 --port YOUR_SERIAL_PORT erase_region 0x9000 0x5000
+```
+
 ### Build fails with `No module named 'SCons.Tool.FortranCommon'`
 
 The ESP32 platform installs PlatformIO into `~/.platformio/penv` and takes the
