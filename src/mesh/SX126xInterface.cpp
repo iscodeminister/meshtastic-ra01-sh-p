@@ -247,6 +247,9 @@ template <typename T> bool SX126xInterface<T>::reconfigure()
 
     if (power > SX126X_MAX_POWER) // This chip has lower power limits than some
         power = SX126X_MAX_POWER;
+#ifdef LORA_FIXED_TX_POWER
+    power = SX126X_MAX_POWER; // fixed drive into an external PA
+#endif
 
     err = lora.setOutputPower(power);
     if (err != RADIOLIB_ERR_NONE)
