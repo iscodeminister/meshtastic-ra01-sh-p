@@ -43,7 +43,6 @@
 // Module RF_EN (FEM enable, active high, 10k pull-up on the module)
 #define SX126X_POWER_EN (21)
 
-#define SX126X_DIO3_TCXO_VOLTAGE (1.8)
-#define TCXO_OPTIONAL // oscillator type not stated in the datasheet; try both TCXO and XTAL
+// Ra-01SH-P uses a crystal, not a TCXO: leave SX126X_DIO3_TCXO_VOLTAGE undefined
 
 #endif

@@ -1490,6 +1490,9 @@ void RadioInterface::limitPower(int8_t loraMaxPower)
 #endif
     if (power > loraMaxPower) // Clamp power to maximum defined level
         power = loraMaxPower;
+#ifdef LORA_FIXED_TX_POWER
+    power = loraMaxPower; // fixed drive into an external PA; tx_power and region limit are ignored
+#endif
 
     LOG_INFO("Final Tx power: %d dBm", power);
 }

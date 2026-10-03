@@ -180,6 +180,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef SX126X_MAX_POWER
 #define SX126X_MAX_POWER 3
 #endif
+#define LORA_FIXED_TX_POWER // always drive the FEM at SX126X_MAX_POWER
 #endif
 
 #ifdef USE_GC1109_PA
