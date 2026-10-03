@@ -272,6 +272,15 @@ settings.
 #define SX126X_DIO3_TCXO_VOLTAGE 1.8
 #define TCXO_OPTIONAL // make it so that the firmware can try both TCXO and XTAL
 
+#ifdef AI_THINKER_RA01SH_P
+// Ra-01SH-P: crystal, no TCXO; RXEN pad (P0.17) drives the module's RF_EN high instead of RX switching
+#undef SX126X_DIO3_TCXO_VOLTAGE
+#undef TCXO_OPTIONAL
+#undef SX126X_RXEN
+#undef RF95_RXEN
+#define SX126X_POWER_EN (0 + 17)
+#endif
+
 // E-Ink DIY
 #define PIN_EINK_CS (32 + 7)
 #define PIN_EINK_DC (32 + 2)
