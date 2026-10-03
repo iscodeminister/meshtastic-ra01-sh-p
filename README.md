@@ -27,6 +27,7 @@ Both builds define `AI_THINKER_RA01SH_P`, which enables the following in
 | Oscillator | Crystal (no TCXO on DIO3) |
 | TX/RX switching | SX1262 DIO2 |
 | FEM enable (RF_EN) | MCU pin held high; low only in deep sleep |
+| Broadcast signing | Off (`MESHTASTIC_EXCLUDE_XEDDSA`): meshes on stable firmware do not relay signed broadcasts |
 
 **The TX power setting in the Meshtastic app is ignored.** The app shows the
 region limit (for example 30 dBm for US, 27 dBm for TW), but the chip is always
